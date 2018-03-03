@@ -1,5 +1,5 @@
 {
-  "name": "jwt-wrapper",
+  "name": "@akshendra/jwt",
   "version": "0.0.2",
   "description": "A wrapper around jwt",
   "main": "index.js",

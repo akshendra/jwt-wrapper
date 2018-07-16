@@ -1,16 +1,15 @@
 
 const jwt = require('jsonwebtoken');
-const { validate, joi } = require('@akshendra/validator');
 
 /**
  * @class JWT
  */
 class JWT {
   constructor(config) {
-    this.config = validate(config, joi.object().keys({
-      algorithm: joi.string().default('HS256'),
-      secret: joi.string().default('dirty leaves and dry grounds'),
-    }));
+    this.config = Object.assign({
+      algorithm: 'HS256',
+      secret: 'dirty leaves and dry grounds',
+    }, config);
   }
 
   /**
@@ -26,11 +25,9 @@ class JWT {
       algorithm,
       secret,
     } = this.config;
-    opts = validate(opts, joi.object().keys({
-      expiresIn: joi.string().default('1d'),
-      algorithm: joi.string().default(algorithm),
-      subject: joi.string(),
-    }));
+    opts = Object.assign(opts, {
+      expiresIn: '1d',
+    });
 
     return new Promise((resolve, reject) => {
       jwt.sign(data, secret, opts, (err, token) => {
@@ -56,9 +53,6 @@ class JWT {
       algorithm,
       secret,
     } = this.config;
-    opts = validate(opts, joi.object().keys({
-      algorithm: joi.string().default(algorithm),
-    }));
 
     return new Promise((resolve, reject) => {
       jwt.verify(token, secret, opts, (err, decoded) => {

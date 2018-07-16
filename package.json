@@ -1,6 +1,6 @@
 {
   "name": "@akshendra/jwt",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A wrapper around jwt",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/akshendra/jwt-wrapper#readme",
   "dependencies": {
-    "@akshendra/validator": "github:akshendra/validator#0.0.2",
     "jsonwebtoken": "^8.2.0"
   },
   "devDependencies": {

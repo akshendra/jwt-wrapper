@@ -25,12 +25,12 @@ class JWT {
       algorithm,
       secret,
     } = this.config;
-    opts = Object.assign(opts, {
+    const options = Object.assign({
       expiresIn: '1d',
-    });
+    }, opts);
 
     return new Promise((resolve, reject) => {
-      jwt.sign(data, secret, opts, (err, token) => {
+      jwt.sign(data, secret, options, (err, token) => {
         if (err) {
           reject(err);
           return;
